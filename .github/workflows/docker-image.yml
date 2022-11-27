@@ -19,6 +19,6 @@ jobs:
       env:
         DOCKER_BUILDKIT: 1
       run: |
-        docker build . --file szpp-judge-frontend.dockerfile --tag node-lib-copy-test:latest
+        docker build . --file szpp-judge-frontend.dockerfile --tag szpp-judge-frontend:latest
         echo "::debug::$(docker image ls)"
-        docker run --rm -- node-lib-copy-test:latest -c 'node -v && node -e "console.log(\"hello world\")" && corepack -v'
+        docker run --rm --entrypoint=/bin/bash -- szpp-judge-frontend:latest -c 'node -v && node -e "console.log(\"hello world\")" && corepack -v'
