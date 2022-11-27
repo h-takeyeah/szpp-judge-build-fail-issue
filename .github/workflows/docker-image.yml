@@ -17,6 +17,6 @@ jobs:
     - uses: docker/setup-buildx-action@v2
     - name: Check if built docker image runs as expected
       run: |
-        docker build . --tag node-lib-copy-test:latest
+        docker build . --file szpp-judge-frontend.dockerfile --tag node-lib-copy-test:latest
         echo "::debug::$(docker image ls)"
         docker run --rm -- node-lib-copy-test:latest -c 'node -v && node -e "console.log(\"hello world\")" && corepack -v'
